@@ -1,0 +1,57 @@
+{
+  "manifestVersion": 1,
+  "version": "1.0.0",
+  "name": "BuildReleaseManagement",
+  "id": "brm",
+  "description": "Manage Build and Release data for project",
+  "publisher": "CezaryBaranowskims",
+  "demands": ["api-version/3.0"],
+  "categories": ["Azure Repos"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "icons": {
+    "default": "img/world.png"
+  },
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true
+    },
+    {
+      "path": "img",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "brm-hub-group",
+      "type": "ms.vss-web.hub-group",
+      "description": "Sample hub group",
+      "targets": ["ms.vss-web.project-hub-groups-collection"],
+      "properties": {
+        "name": "BRM!",
+        "icon": {
+          "dark": "img/world.png",
+          "light": "img/world.png"
+        }
+      }
+    },
+    {
+      "id": "default-hub",
+      "type": "ms.vss-web.hub",
+      "targets": [".brm-hub-group"],
+      "properties": {
+        "uri": "dist/hub/hub.html"
+      }
+    }
+  ],
+  "scopes": ["vso.build", "vso.code", "vso.work"]
+}
